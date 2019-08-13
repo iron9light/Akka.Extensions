@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Akka.DI.TestKit" Version="1.4.0-beta1" />
+    <PackageReference Include="Akka.TestKit.Xunit2" Version="1.4.0-beta1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Akka.DI.Extensions.DependencyInjection\Akka.DI.Extensions.DependencyInjection.csproj" />
+  </ItemGroup>
+
+</Project>
