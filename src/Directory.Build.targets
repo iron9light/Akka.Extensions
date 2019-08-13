@@ -9,7 +9,7 @@
 
   <PropertyGroup Condition=" '$(IsTestProject)' == 'true' ">
     <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)/tests.ruleset</CodeAnalysisRuleSet>
-    <CoverletOutputFormat>cobertura</CoverletOutputFormat>
+    <CoverletOutputFormat>opencover,cobertura</CoverletOutputFormat>
     <Exclude>[xunit.*]*</Exclude>
     <ExcludeByAttribute>ObsoleteAttribute,GeneratedCodeAttribute,CompilerGeneratedAttribute</ExcludeByAttribute>
     <!-- Ensure we preserve each coverlet output file per target framework: https://github.com/tonerdo/coverlet/issues/177 -->
