@@ -24,6 +24,15 @@ var system = ActorSystem.Create("MySystem");
 system.UseServiceProvider(serviceProvider);
 ```
 
+When creating actorRefs straight off your ActorSystem instance, you can use the DI() Extension.
+
+```csharp
+// Create the Props using the DI extension on your ActorSystem instance
+var workerServiceRef = system.ActorOf(system.DI().Props<IWorkerService>(), "WorkerService");
+var worker1Ref = system.ActorOf(system.DI().Props<TypedWorker>(), "Worker1");
+var worker2Ref = system.ActorOf(system.DI().Props<TypedWorker>(), "Worker2");
+```
+
 ## Akka.Logger.Extensions.Logging
 
 [Microsoft.Extensions.Logging](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging) logging adapter for [Akka.NET](https://getakka.net/articles/utilities/logging.html)
