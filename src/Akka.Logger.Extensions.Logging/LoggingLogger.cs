@@ -9,11 +9,18 @@ using Microsoft.Extensions.Logging.Abstractions;
 
 namespace Akka.Logger.Extensions.Logging
 {
+    /// <summary>
+    /// This class is used to receive log events and sends them to
+    /// the configured <see cref="ILogger"/> logger. The following log events are
+    /// recognized: <see cref="Debug"/>, <see cref="Info"/>,
+    /// <see cref="Warning"/> and <see cref="Error"/>.
+    /// </summary>
     public class LoggingLogger
         : UntypedActor, IRequiresMessageQueue<ILoggerMessageQueueSemantics>
     {
         public static ILoggerFactory LoggerFactory { get; set; } = NullLoggerFactory.Instance;
 
+        /// <inheritdoc />
         protected override void OnReceive(object message)
         {
             switch (message)
@@ -41,7 +48,7 @@ namespace Akka.Logger.Extensions.Logging
             string format = "{Timestamp} [{LogSource}] ({Thread})";
             var args = new List<object>
             {
-                logEvent.Timestamp,
+                logEvent.Timestamp.ToString("u"),
                 logEvent.LogSource,
                 logEvent.Thread.ManagedThreadId.ToString().PadLeft(4, '0'),
             };
