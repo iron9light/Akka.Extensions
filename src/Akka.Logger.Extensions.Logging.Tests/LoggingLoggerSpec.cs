@@ -34,7 +34,10 @@ namespace Akka.Logger.Extensions.Logging.Tests
             LoggingLogger.LoggerFactory = serviceProvider.GetRequiredService<ILoggerFactory>();
 
             var logger = Sys.GetLogger();
-            logger.Info("Log1 {arg1} {arg2}", 1, "a");
+            logger.Debug("Log1 {arg1} {arg2}", 1, "a");
+            logger.Info("Log2 {arg1} {arg2}", 2, "b");
+            logger.Warning("Log3 {arg1} {arg2}", 3, "c");
+            logger.Error(new Exception("test"), "Log4 {arg1} {arg2}", 4, "d");
         }
 
         [Fact]
