@@ -83,19 +83,19 @@ namespace Akka.Logger.Extensions.Logging
         private void Log(Warning logEvent)
         {
             var (format, args) = GetFormat(logEvent);
-            GetLogger(logEvent).LogWarning(logEvent.Cause, format, args);
+            GetLogger(logEvent).LogWarning(format, args);
         }
 
         private void Log(Info logEvent)
         {
             var (format, args) = GetFormat(logEvent);
-            GetLogger(logEvent).LogInformation(logEvent.Cause, format, args);
+            GetLogger(logEvent).LogInformation(format, args);
         }
 
         private void Log(Debug logEvent)
         {
             var (format, args) = GetFormat(logEvent);
-            GetLogger(logEvent).LogDebug(logEvent.Cause, format, args);
+            GetLogger(logEvent).LogDebug(format, args);
         }
 
         private ILogger GetLogger(LogEvent logEvent)
