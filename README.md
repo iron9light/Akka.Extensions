@@ -10,7 +10,7 @@
 
 [Microsoft.Extensions.DependencyInjection](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection) Dependency Injection (DI) support for [Akka.NET](https://getakka.net/articles/actors/dependency-injection.html)
 
-[![NuGet](https://img.shields.io/nuget/v/Akka.DI.Extensions.DependencyInjection.svg)](https://www.nuget.org/packages/Akka.DI.Extensions.DependencyInjection/)
+[![NuGet](https://img.shields.io/nuget/vpre/Akka.DI.Extensions.DependencyInjection.svg)](https://www.nuget.org/packages/Akka.DI.Extensions.DependencyInjection/)
 
 ```csharp
 // Create and build your container
@@ -37,7 +37,7 @@ var worker2Ref = system.ActorOf(system.DI().Props<TypedWorker>(), "Worker2");
 
 [Microsoft.Extensions.Logging](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging) logging adapter for [Akka.NET](https://getakka.net/articles/utilities/logging.html)
 
-[![NuGet](https://img.shields.io/nuget/v/Akka.Logger.Extensions.Logging.svg)](https://www.nuget.org/packages/Akka.Logger.Extensions.Logging/)
+[![NuGet](https://img.shields.io/nuget/vpre/Akka.Logger.Extensions.Logging.svg)](https://www.nuget.org/packages/Akka.Logger.Extensions.Logging/)
 
 You'll need to set the static property `LoggingLogger.LoggerFactory` and also specify to use the logger in the config when creating the system, for example like this:
 
