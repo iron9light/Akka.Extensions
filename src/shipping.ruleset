@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RuleSet Name="StyleCop.Analyzers rules" ToolsVersion="14.0">
+<RuleSet Name="Shipping analyzers rules" ToolsVersion="15.0">
   <!-- For detailed rule descriptions, please refer to https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/DOCUMENTATION.md -->
   <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers.SpecialRules">
     <!-- XmlCommentAnalysisDisabled -->

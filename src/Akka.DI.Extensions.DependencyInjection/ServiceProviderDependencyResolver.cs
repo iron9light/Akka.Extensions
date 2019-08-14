@@ -12,7 +12,7 @@ namespace Akka.DI.Extensions.DependencyInjection
 {
     /// <summary>
     /// Provides services to the <see cref="ActorSystem "/> extension system
-    /// used to create actors using the Microsoft.Extensions.DependencyInjection container.
+    /// used to create actors using the <see cref="Microsoft.Extensions.DependencyInjection"/> container.
     /// </summary>
     public class ServiceProviderDependencyResolver
         : IDependencyResolver, INoSerializationVerificationNeeded
