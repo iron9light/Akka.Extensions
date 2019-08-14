@@ -1,10 +1,10 @@
 # [Akka.Net](https://getakka.net) integrate with [Microsoft.Extensions](https://github.com/aspnet/Extensions)
 
-[![Build Status](https://iron9light.visualstudio.com/github/_apis/build/status/iron9light.Akka.Extensions?branchName=master)](https://iron9light.visualstudio.com/github/_build/latest?definitionId=4&branchName=master)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=iron9light_Akka.Extensions&metric=ncloc)](https://sonarcloud.io/dashboard?id=iron9light_Akka.Extensions)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=iron9light_Akka.Extensions&metric=coverage)](https://sonarcloud.io/dashboard?id=iron9light_Akka.Extensions)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=iron9light_Akka.Extensions&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=iron9light_Akka.Extensions)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=iron9light_Akka.Extensions&metric=security_rating)](https://sonarcloud.io/dashboard?id=iron9light_Akka.Extensions)
+[![Build Status](https://iron9light.visualstudio.com/github/_apis/build/status/iron9light.Akka.Extensions?branchName=rel/v1.3)](https://iron9light.visualstudio.com/github/_build/latest?definitionId=4&branchName=rel/v1.3)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?branch=v1.3&project=iron9light_Akka.Extensions&metric=ncloc)](https://sonarcloud.io/dashboard?id=iron9light_Akka.Extensions&branch=v1.3)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?branch=v1.3&project=iron9light_Akka.Extensions&metric=coverage)](https://sonarcloud.io/dashboard?id=iron9light_Akka.Extensions&branch=v1.3)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?branch=v1.3&project=iron9light_Akka.Extensions&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=iron9light_Akka.Extensions&branch=v1.3)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?branch=v1.3&project=iron9light_Akka.Extensions&metric=security_rating)](https://sonarcloud.io/dashboard?id=iron9light_Akka.Extensions&branch=v1.3)
 
 ## Akka.DI.Extensions.DependencyInjection
 
