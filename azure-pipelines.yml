@@ -37,7 +37,7 @@ steps:
   displayName: 'SonarScanner begin (PR)'
   condition: variables['System.PullRequest.SourceBranch']
 
-- script: dotnet-sonarscanner begin /k:"$(sonarProjectKey)" /o:"iron9light-github" /v:"$(Build.BuildNumber)" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="$(sonar.token)" /d:sonar.cs.opencover.reportsPaths="$(Build.SourcesDirectory)/**/coverage.opencover.xml" /d:sonar.cs.vstest.reportsPaths="$(Agent.TempDirectory)/*.trx"
+- script: dotnet-sonarscanner begin /k:"$(sonarProjectKey)" /o:"iron9light-github" /v:"$(Build.BuildNumber)" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="$(sonar.token)" /d:sonar.cs.opencover.reportsPaths="$(Build.SourcesDirectory)/**/coverage.opencover.xml" /d:sonar.cs.vstest.reportsPaths="$(Agent.TempDirectory)/*.trx" /d:sonar.branch.name="$(Build.SourceBranchName)"
   displayName: 'SonarScanner begin'
   condition: not(variables['System.PullRequest.SourceBranch'])
 
