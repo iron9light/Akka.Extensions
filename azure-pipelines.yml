@@ -15,7 +15,7 @@ variables:
   buildConfiguration: 'Release'
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   sonarProjectKey: 'iron9light_Akka.Extensions'
-  sonarPullrequestGithubRepository: "iron9light/HOCON.Json"
+  sonarPullrequestGithubRepository: "iron9light/Akka.Extensions"
 
 steps:
 - task: UseDotNet@2
