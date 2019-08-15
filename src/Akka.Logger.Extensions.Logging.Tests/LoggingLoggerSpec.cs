@@ -25,7 +25,9 @@ namespace Akka.Logger.Extensions.Logging.Tests
         }
 
         [Fact]
+#pragma warning disable S2699 // Tests should include assertions
         public void SmokeTest()
+#pragma warning restore S2699 // Tests should include assertions
         {
             var services = new ServiceCollection();
             services.AddLogging(logging => logging.AddXUnit(Output));
