@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Globalization;
 
 using Akka.Actor;
 using Akka.Dispatch;
@@ -48,9 +49,9 @@ namespace Akka.Logger.Extensions.Logging
             string format = "{Timestamp} [{LogSource}] ({Thread})";
             var args = new List<object>
             {
-                logEvent.Timestamp.ToString("u"),
+                logEvent.Timestamp.ToString("u", CultureInfo.InvariantCulture),
                 logEvent.LogSource,
-                logEvent.Thread.ManagedThreadId.ToString().PadLeft(4, '0'),
+                logEvent.Thread.ManagedThreadId.ToString("D4", CultureInfo.InvariantCulture),
             };
 
             if (logEvent.Message is LogMessage logMessage)
@@ -72,6 +73,11 @@ namespace Akka.Logger.Extensions.Logging
             }
 
             return (format, args.ToArray());
+        }
+
+        private static ILogger GetLogger(LogEvent logEvent)
+        {
+            return LoggerFactory.CreateLogger(logEvent.LogClass);
         }
 
         private void Log(Error logEvent)
@@ -96,11 +102,6 @@ namespace Akka.Logger.Extensions.Logging
         {
             var (format, args) = GetFormat(logEvent);
             GetLogger(logEvent).LogDebug(format, args);
-        }
-
-        private ILogger GetLogger(LogEvent logEvent)
-        {
-            return LoggerFactory.CreateLogger(logEvent.LogClass);
         }
     }
 }

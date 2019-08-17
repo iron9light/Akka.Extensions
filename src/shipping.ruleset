@@ -29,4 +29,12 @@
     <!-- FileMustHaveHeader -->
     <Rule Id="SA1633" Action="None" />
   </Rules>
+  <Rules AnalyzerId="Microsoft.CodeQuality.Analyzers" RuleNamespace="Microsoft.CodeQuality.Analyzers.ApiDesignGuidelines">
+    <!-- DoNotDirectlyAwaitATask -->
+    <Rule Id="CA2007" Action="None" />
+  </Rules>
+  <Rules AnalyzerId="Microsoft.NetCore.Analyzers" RuleNamespace="Microsoft.NetCore.Analyzers.Runtime">
+    <!-- DoNotPassLiteralsAsLocalizedParameters -->
+    <Rule Id="CA1303" Action="None" />
+  </Rules>
 </RuleSet>
