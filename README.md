@@ -55,6 +55,8 @@ var system = ActorSystem.Create("my-test-system", "akka { loglevel=INFO,  logger
 To log inside an actor:
 
 ```csharp
+using Akka.Logger.Extensions.Logging;
+
 var log = Context.GetLogger();
 ...
 log.Info("The value is {Counter}", counter);
