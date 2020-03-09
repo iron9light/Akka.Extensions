@@ -1,9 +1,10 @@
 using System;
 
-using Akka.Configuration;
 using Akka.Event;
 
 using FluentAssertions;
+
+using Hocon;
 
 using Xunit;
 using Xunit.Abstractions;
