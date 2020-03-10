@@ -4,8 +4,10 @@ trigger:
     - master
     - rel/v*
   paths:
+    include:
+    - '*'
     exclude:
-    - doc/
+    - 'doc/*'
     - '*.md'
 
 pool:
@@ -15,14 +17,14 @@ variables:
   buildConfiguration: 'Release'
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   sonarProjectKey: 'iron9light_Akka.Extensions'
-  sonarPullrequestGithubRepository: "iron9light/Akka.Extensions"
+  sonarPullrequestGithubRepository: 'iron9light/Akka.Extensions'
 
 steps:
 - task: UseDotNet@2
-  displayName: 'Use .NET Core 2.x'
+  displayName: 'Use .NET Core 3.x'
   inputs:
     packageType: sdk
-    version: 2.x
+    version: 3.x
 
 - script: dotnet tool install --tool-path . nbgv
   displayName: 'Install NBGV tool'
@@ -56,25 +58,36 @@ steps:
 - script: dotnet-sonarscanner end /d:sonar.login="$(sonar.token)"
   displayName: 'SonarScanner end'
 
+- task: PublishCodeCoverageResults@1
+  displayName: Publish Coverage
+  inputs:
+    codeCoverageTool: cobertura
+    summaryFileLocation: $(Build.SourcesDirectory)/**/coverage.cobertura.xml
+
 - task: DotNetCoreCLI@2
   displayName: Pack
   inputs:
     command: pack
     packagesToPack: '**/*.csproj'
     configuration: $(BuildConfiguration)
-    packDirectory: $(Build.ArtifactStagingDirectory)\artifacts
+    packDirectory: $(Build.ArtifactStagingDirectory)/artifacts
     nobuild: true
     verbosityPack: Minimal
+  condition: not(variables['System.PullRequest.SourceBranch'])
 
 - task: PublishBuildArtifacts@1
   displayName: Publish Package Artifacts
   inputs:
-    pathToPublish: $(Build.ArtifactStagingDirectory)\artifacts
+    pathToPublish: $(Build.ArtifactStagingDirectory)/artifacts
     artifactType: container
     artifactName: Packages
+  condition: not(variables['System.PullRequest.SourceBranch'])
 
-- task: PublishCodeCoverageResults@1
-  displayName: Publish Coverage
+- task: NuGetCommand@2
+  displayName: 'GitHub packages NuGet push'
   inputs:
-    codeCoverageTool: cobertura
-    summaryFileLocation: $(Build.SourcesDirectory)/**/coverage.cobertura.xml
+    command: push
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
+    nuGetFeedType: external
+    publishFeedCredentials: GitHubPackagesNuGetConnection
+  condition: not(variables['System.PullRequest.SourceBranch'])
