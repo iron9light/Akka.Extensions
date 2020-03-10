@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 
-using Hocon;
+using Akka.Configuration;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
