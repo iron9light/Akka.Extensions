@@ -15,7 +15,7 @@
 ```csharp
 // Create and build your container
 var builder = new ServiceCollection();
-builder.AddTransient<IWorkerService, IWorkerService>();
+builder.AddTransient<IWorkerService, WorkerService>();
 builder.AddTransient<TypedWorker>();
 var serviceProvider = builder.BuildServiceProvider();
 
