@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Akka.DI.TestKit" Version="1.4.1" />
-    <PackageReference Include="Akka.TestKit.Xunit2" Version="1.4.1" />
+    <PackageReference Include="Akka.DI.TestKit" Version="1.4.2" />
+    <PackageReference Include="Akka.TestKit.Xunit2" Version="1.4.2" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
   </ItemGroup>
 
