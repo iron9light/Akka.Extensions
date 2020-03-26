@@ -1,6 +1,6 @@
 # [Akka.Net](https://getakka.net) integrate with [Microsoft.Extensions](https://github.com/aspnet/Extensions)
 
-[![Build Status](https://iron9light.visualstudio.com/github/_apis/build/status/iron9light.Akka.Extensions?branchName=rel/v1.3)](https://iron9light.visualstudio.com/github/_build/latest?definitionId=4&branchName=rel/v1.3)
+[![Build Status](https://iron9light.visualstudio.com/github/_apis/build/status/iron9light.Akka.Extensions?branchName=rel%2Fv1.3)](https://iron9light.visualstudio.com/github/_build/latest?definitionId=4&branchName=rel%2Fv1.3)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?branch=v1.3&project=iron9light_Akka.Extensions&metric=ncloc)](https://sonarcloud.io/dashboard?id=iron9light_Akka.Extensions&branch=v1.3)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?branch=v1.3&project=iron9light_Akka.Extensions&metric=coverage)](https://sonarcloud.io/dashboard?id=iron9light_Akka.Extensions&branch=v1.3)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?branch=v1.3&project=iron9light_Akka.Extensions&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=iron9light_Akka.Extensions&branch=v1.3)
