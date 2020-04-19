@@ -1,7 +1,7 @@
+using System;
+
 using Akka.Actor;
 using Akka.Event;
-
-using Microsoft;
 
 namespace Akka.Logger.Extensions.Logging
 {
@@ -14,7 +14,10 @@ namespace Akka.Logger.Extensions.Logging
         /// <returns>The newly created logging adapter.</returns>
         public static ILoggingAdapter GetLogger(this IActorContext context)
         {
-            Requires.NotNull(context, nameof(context));
+            if (context == null)
+            {
+                throw new ArgumentNullException(nameof(context));
+            }
 
             var logSource = context.Self.ToString();
             var logClass = context.Props.Type;
@@ -29,7 +32,10 @@ namespace Akka.Logger.Extensions.Logging
         /// <returns>The newly created logging adapter.</returns>
         public static ILoggingAdapter GetLogger(this ActorSystem system)
         {
-            Requires.NotNull(system, nameof(system));
+            if (system == null)
+            {
+                throw new ArgumentNullException(nameof(system));
+            }
 
             var logSource = $"{nameof(ActorSystem)}({system.Name})";
             var logClass = system.GetType();

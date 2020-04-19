@@ -3,8 +3,6 @@ using System;
 using Akka.Actor;
 using Akka.DI.Core;
 
-using Microsoft;
-
 namespace Akka.DI.Extensions.DependencyInjection
 {
     /// <summary>
@@ -38,8 +36,15 @@ namespace Akka.DI.Extensions.DependencyInjection
         /// </exception>
         public static ActorSystem UseServiceProvider(this ActorSystem system, IServiceProvider serviceProvider, out IDependencyResolver dependencyResolver)
         {
-            Requires.NotNull(system, nameof(system));
-            Requires.NotNull(serviceProvider, nameof(serviceProvider));
+            if (system == null)
+            {
+                throw new ArgumentNullException(nameof(system));
+            }
+
+            if (serviceProvider == null)
+            {
+                throw new ArgumentNullException(nameof(serviceProvider));
+            }
 
             dependencyResolver = new ServiceProviderDependencyResolver(serviceProvider, system);
             return system;

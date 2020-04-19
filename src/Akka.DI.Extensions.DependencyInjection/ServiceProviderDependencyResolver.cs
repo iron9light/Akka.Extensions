@@ -5,7 +5,6 @@ using System.Runtime.CompilerServices;
 using Akka.Actor;
 using Akka.DI.Core;
 
-using Microsoft;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Akka.DI.Extensions.DependencyInjection
@@ -35,8 +34,16 @@ namespace Akka.DI.Extensions.DependencyInjection
         /// </exception>
         public ServiceProviderDependencyResolver(IServiceProvider serviceProvider, ActorSystem system)
         {
-            Requires.NotNull(serviceProvider, nameof(serviceProvider));
-            Requires.NotNull(system, nameof(system));
+            if (serviceProvider == null)
+            {
+                throw new ArgumentNullException(nameof(serviceProvider));
+            }
+
+            if (system == null)
+            {
+                throw new ArgumentNullException(nameof(system));
+            }
+
             _serviceProvider = serviceProvider;
             _system = system;
             system.AddDependencyResolver(this);
