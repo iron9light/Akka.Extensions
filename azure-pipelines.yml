@@ -96,3 +96,4 @@ steps:
     nuGetFeedType: external
     publishFeedCredentials: GitHubPackagesNuGetConnection
   condition: and(succeeded(), not(variables['System.PullRequest.SourceBranch']))
+  continueOnError: true
