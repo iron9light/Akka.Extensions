@@ -19,7 +19,7 @@ namespace Akka.Logger.Extensions.Logging
                 throw new ArgumentNullException(nameof(context));
             }
 
-            var logSource = context.Self.ToString();
+            var logSource = context.Self.ToString()!;
             var logClass = context.Props.Type;
 
             return new LoggingLoggingAdapter(context.System.EventStream, logSource, logClass);

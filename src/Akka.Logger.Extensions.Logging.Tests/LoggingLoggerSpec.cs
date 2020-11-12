@@ -31,15 +31,16 @@ namespace Akka.Logger.Extensions.Logging.Tests
         {
             var services = new ServiceCollection();
             services.AddLogging(logging => logging.AddXUnit(Output));
-            var serviceProvider = services.BuildServiceProvider();
+            using (var serviceProvider = services.BuildServiceProvider())
+            {
+                LoggingLogger.LoggerFactory = serviceProvider.GetRequiredService<ILoggerFactory>();
 
-            LoggingLogger.LoggerFactory = serviceProvider.GetRequiredService<ILoggerFactory>();
-
-            var logger = Sys.GetLogger();
-            logger.Debug("Log1 {arg1} {arg2}", 1, "a");
-            logger.Info("Log2 {arg1} {arg2}", 2, "b");
-            logger.Warning("Log3 {arg1} {arg2}", 3, "c");
-            logger.Error(new Exception("test"), "Log4 {arg1} {arg2}", 4, "d");
+                var logger = Sys.GetLogger();
+                logger.Debug("Log1 {arg1} {arg2}", 1, "a");
+                logger.Info("Log2 {arg1} {arg2}", 2, "b");
+                logger.Warning("Log3 {arg1} {arg2}", 3, "c");
+                logger.Error(new Exception("test"), "Log4 {arg1} {arg2}", 4, "d");
+            }
         }
 
         [Fact]
@@ -47,12 +48,13 @@ namespace Akka.Logger.Extensions.Logging.Tests
         {
             var loggerMock = new Mock<ILogger>();
             loggerMock
-                .Setup(logger => logger.Log<object>(
+                .Setup(logger => logger.Log(
                     LogLevel.Information,
                     0,
-                    It.IsNotNull<object>(),
+                    It.IsNotNull<It.IsAnyType>(),
                     null,
-                    It.IsNotNull<Func<object, Exception, string>>()));
+                    It.IsNotNull<Func<It.IsAnyType, Exception, string>>()
+                    ));
 
             var loggerFactoryMock = new Mock<ILoggerFactory>();
             loggerFactoryMock
@@ -67,14 +69,15 @@ namespace Akka.Logger.Extensions.Logging.Tests
 
             loggerFactoryMock.Verify(
                 loggerFactory => loggerFactory.CreateLogger(It.IsNotNull<string>()),
-                Times.Once());
+                Times.AtLeastOnce());
             loggerMock.Verify(
-                logger => logger.Log<object>(
+                logger => logger.Log(
                     LogLevel.Information,
                     0,
-                    It.IsNotNull<object>(),
+                    It.IsNotNull<It.IsAnyType>(),
                     null,
-                    It.IsNotNull<Func<object, Exception, string>>()),
+                    It.IsNotNull<Func<It.IsAnyType, Exception, string>>()
+                    ),
                 Times.Once());
         }
     }

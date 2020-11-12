@@ -1,6 +1,8 @@
+using System;
+
 using Akka.Event;
 
-using Microsoft.Extensions.Logging.Internal;
+using Microsoft.Extensions.Logging;
 
 namespace Akka.Logger.Extensions.Logging
 {
@@ -19,6 +21,35 @@ namespace Akka.Logger.Extensions.Logging
 
         /// <inheritdoc />
         public string Format(string format, params object[] args)
-            => new FormattedLogValues(format, args).ToString();
+        {
+            var formatterLogger = new FormatterLogger();
+            formatterLogger.Log(Microsoft.Extensions.Logging.LogLevel.None, format, args);
+            return formatterLogger.ToString();
+        }
+
+        private class FormatterLogger : ILogger
+        {
+            private string _formattedMessage = string.Empty;
+
+            public IDisposable BeginScope<TState>(TState state)
+            {
+                throw new InvalidOperationException();
+            }
+
+            public bool IsEnabled(Microsoft.Extensions.Logging.LogLevel logLevel)
+            {
+                throw new InvalidOperationException();
+            }
+
+            public void Log<TState>(Microsoft.Extensions.Logging.LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
+            {
+                _formattedMessage = formatter(state, exception);
+            }
+
+            public override string ToString()
+            {
+                return _formattedMessage;
+            }
+        }
     }
 }

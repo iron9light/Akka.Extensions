@@ -76,29 +76,27 @@ namespace Akka.Logger.Extensions.Logging
         }
 
         private static ILogger GetLogger(LogEvent logEvent)
-        {
-            return LoggerFactory.CreateLogger(logEvent.LogClass);
-        }
+            => LoggerFactory.CreateLogger(logEvent.LogClass);
 
-        private void Log(Error logEvent)
+        private static void Log(Error logEvent)
         {
             var (format, args) = GetFormat(logEvent);
             GetLogger(logEvent).LogError(logEvent.Cause, format, args);
         }
 
-        private void Log(Warning logEvent)
+        private static void Log(Warning logEvent)
         {
             var (format, args) = GetFormat(logEvent);
             GetLogger(logEvent).LogWarning(logEvent.Cause, format, args);
         }
 
-        private void Log(Info logEvent)
+        private static void Log(Info logEvent)
         {
             var (format, args) = GetFormat(logEvent);
             GetLogger(logEvent).LogInformation(logEvent.Cause, format, args);
         }
 
-        private void Log(Debug logEvent)
+        private static void Log(Debug logEvent)
         {
             var (format, args) = GetFormat(logEvent);
             GetLogger(logEvent).LogDebug(logEvent.Cause, format, args);
