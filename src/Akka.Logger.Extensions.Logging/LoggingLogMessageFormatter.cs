@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 using Akka.Event;
 
@@ -31,11 +32,13 @@ namespace Akka.Logger.Extensions.Logging
         {
             private string _formattedMessage = string.Empty;
 
+            [ExcludeFromCodeCoverage]
             public IDisposable BeginScope<TState>(TState state)
             {
                 throw new InvalidOperationException();
             }
 
+            [ExcludeFromCodeCoverage]
             public bool IsEnabled(Microsoft.Extensions.Logging.LogLevel logLevel)
             {
                 throw new InvalidOperationException();
