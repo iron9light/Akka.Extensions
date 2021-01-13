@@ -9,9 +9,8 @@
   <ItemGroup>
     <PackageReference Include="Akka.TestKit.Xunit2" Version="1.4.1" />
     <PackageReference Include="MartinCostello.Logging.XUnit" Version="0.1.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
-    <PackageReference Include="Moq" Version="4.15.1" />
   </ItemGroup>
 
   <ItemGroup>
